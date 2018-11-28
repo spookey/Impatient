@@ -5,59 +5,81 @@ namespace Impatient
     public class Logic
     {
 
-        private readonly DateTime FstTm = Make(Config.FstHr, Config.FstMn);
-        private readonly DateTime ScdTm = Make(Config.ScdHr, Config.ScdMn);
-        private readonly DateTime TrdTm = Make(Config.TrdHr, Config.TrdMn);
+        private readonly DateTime StartTime = Make(
+            Config.StartHour, Config.StartMinute
+        );
+        private readonly DateTime FirstTime = Make(
+            Config.FirstHour, Config.FirstMinute
+        );
+        private readonly DateTime SecondTime = Make(
+            Config.SecondHour, Config.SecondMinute
+        );
+        private readonly DateTime ThirdTime = Make(
+            Config.ThirdHour, Config.ThirdMinute
+        );
+        private readonly DateTime FourthTime = Make(
+            Config.FourthHour, Config.FourthMinute
+        );
 
-        private static DateTime Now
+        public static DateTime Now
         {
             get { return DateTime.Now; }
-        }
-
-        public static string NowStr
-        {
-            get { return string.Format("{0:HH:MM:SS}", Now); }
         }
 
         private static DateTime Make(int hr, int mn)
         {
             DateTime now = Now;
-            if (hr <= now.Hour) { now = now.AddDays(1); }
             return new DateTime(now.Year, now.Month, now.Day, hr, mn, 0);
         }
 
-        private int Span(DateTime future)
+        private int SpanMax(DateTime some)
+        {
+            if (some <= StartTime) { return 0; }
+            return (int)(some - StartTime).TotalSeconds;
+        }
+
+        private int SpanNum(DateTime some)
         {
             DateTime now = Now;
-            if (future <= now) { return 0; }
-            return (int)(future - now).TotalSeconds;
+            if (Now <= StartTime) { return 0; }
+            if (Now >= some) { return 0; }
+            return (int)(some - now).TotalSeconds;
         }
 
-        public bool HardReset
+        public int FirstMax
         {
-            get {
-                return Now.Hour == 0 && Now.Minute == 0 && Now.Second == 0;
-            }
+            get { return SpanMax(FirstTime); }
+        }
+        public int FirstNum
+        {
+            get { return SpanNum(FirstTime); }
         }
 
-        public bool Divider
+        public int SecondMax
         {
-            get { return Now.Second == 59; }
+            get { return SpanMax(SecondTime); }
+        }
+        public int SecondNum
+        {
+            get { return SpanNum(SecondTime); }
         }
 
-        public int Fst
+        public int ThirdMax
         {
-            get { return Span(FstTm); }
+            get { return SpanMax(ThirdTime); }
+        }
+        public int ThirdNum
+        {
+            get { return SpanNum(ThirdTime); }
         }
 
-        public int Scd
+        public int FourthMax
         {
-            get { return Span(ScdTm); }
+            get { return SpanMax(FourthTime); }
         }
-
-        public int Trd
+        public int FourthNum
         {
-            get { return Span(TrdTm); }
+            get { return SpanNum(FourthTime); }
         }
     }
 }

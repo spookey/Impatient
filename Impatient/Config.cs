@@ -19,34 +19,52 @@ namespace Impatient
         {
             if (!Has(key)) { return fallback; }
             TypeConverter conv = TypeDescriptor.GetConverter(typeof(T));
-            return (T)(conv.ConvertFromInvariantString(Get(key)));
+            return (T)conv.ConvertFromInvariantString(Get(key));
         }
 
-        public static int FstHr
+        public static int StartHour
         {
-            get { return Get("FstHr", 0); }
+            get { return Get("StartHour", 0); }
         }
-        public static int FstMn
+        public static int StartMinute
         {
-            get { return Get("FstMn", 0); }
-        }
-
-        public static int ScdHr
-        {
-            get { return Get("ScdHr", 0); }
-        }
-        public static int ScdMn
-        {
-            get { return Get("ScdMn", 0); }
+            get { return Get("StartMinute", 0); }
         }
 
-        public static int TrdHr
+        public static int FirstHour
         {
-            get { return Get("TrdHr", 0); }
+            get { return Get("FirstHour", 0); }
         }
-        public static int TrdMn
+        public static int FirstMinute
         {
-            get { return Get("TrdMn", 0); }
+            get { return Get("FirstMinute", 0); }
+        }
+
+        public static int SecondHour
+        {
+            get { return Get("SecondHour", 0); }
+        }
+        public static int SecondMinute
+        {
+            get { return Get("SecondMinute", 0); }
+        }
+
+        public static int ThirdHour
+        {
+            get { return Get("ThirdHour", 0); }
+        }
+        public static int ThirdMinute
+        {
+            get { return Get("ThirdMinute", 0); }
+        }
+
+        public static int FourthHour
+        {
+            get { return Get("FourthHour", 0); }
+        }
+        public static int FourthMinute
+        {
+            get { return Get("FourthMinute", 0); }
         }
 
     }

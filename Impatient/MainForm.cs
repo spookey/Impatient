@@ -1,143 +1,91 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Impatient
 {
     public partial class MainForm : Form
     {
-        private Logic logic = null;
+        private Logic logic = new Logic();
 
         public MainForm()
         {
             this.InitializeComponent();
-            this.OnResize();
 
-            this.Initialize();
+            this.firstProgressBar.Minimum = 0;
+            this.firstProgressBar.Maximum = this.logic.FirstMax;
+            this.secondProgressBar.Minimum = 0;
+            this.secondProgressBar.Maximum = this.logic.SecondMax;
+            this.thirdProgressBar.Minimum = 0;
+            this.thirdProgressBar.Maximum = this.logic.ThirdMax;
+            this.fourthProgressBar.Minimum = 0;
+            this.fourthProgressBar.Maximum = this.logic.FourthMax;
+
+            this.backgroundWorker.RunWorkerAsync();
+        }
+         
+        private IEnumerable<Label> Labels()
+        {
+            yield return this.firstLabel;
+            yield return this.secondLabel;
+            yield return this.thirdLabel;
+            yield return this.fourthLabel;
+        }
+         
+        private void Set(ProgressBar bar, Label lbl, int val)
+        {
+            bar.Value = val;
+            lbl.Text = string.Format("{0:000}", val);
         }
 
-        private void Initialize()
+        private void BackgroundWorker_DoWork(object _, DoWorkEventArgs __)
         {
-            this.logic = new Logic();
-            this.SetupBars();
-            this.theTimer.Enabled = true;
+            Thread.Sleep(100);
         }
 
-        private void MainForm_Resize(object _, EventArgs __)
+        private void BackgroundWorker_RunWorkerCompleted(
+            object _, RunWorkerCompletedEventArgs __
+        )
         {
-            this.OnResize();
-        }
-
-        private void TheTimer_Tick(object _, EventArgs __)
-        {
-            this.Tick();
-        }
-
-        private void ResetColor()
-        {
-            this.BackColor = SystemColors.Control;
-        }
-        private void SetDColor()
-        {
-            this.BackColor = SystemColors.ControlDark;
-        }
-
-        #region "cycle"
-
-        private const string APP_NAME = "Impatient";
-
-        private void Tick()
-        {
-            if (this.logic.HardReset) { this.Initialize(); }
-
-            if (this.logic.Divider) { this.SetDColor(); }
-            else { this.ResetColor(); }
-
-            int fst = this.logic.Fst;
-            int scd = this.logic.Scd;
-            int trd = this.logic.Trd;
-
-            this.barFst.Value = fst;
-            this.barScd.Value = scd;
-            this.barTrd.Value = trd;
-
-            this.txtFst.Text = string.Format("{0:000}", fst);
-            this.txtScd.Text = string.Format("{0:000}", scd);
-            this.txtTrd.Text = string.Format("{0:000}", trd);
-        }
-
-        private void SetupBars()
-        {
-            this.barFst.Minimum = 0;
-            this.barFst.Maximum = this.logic.Fst;
-            this.barScd.Minimum = 0;
-            this.barScd.Maximum = this.logic.Scd;
-            this.barTrd.Minimum = 0;
-            this.barTrd.Maximum = this.logic.Trd;
-        }
-
-        #endregion
-
-        #region "fluid layout"
-
-        private const int SPAN_X = 12;
-        private const int SPAN_Y = 12;
-
-        private Font SizedFont(float size)
-        {
-            return new Font(
-                "Microsoft Sans Serif", size,
-                FontStyle.Bold, GraphicsUnit.Pixel
+            this.BackColor = (
+                (Logic.Now.Second == 59) ?
+                SystemColors.ControlDark : SystemColors.Control
             );
+
+            this.Set(
+                this.firstProgressBar, this.firstLabel,
+                this.logic.FirstNum
+            );
+            this.Set(
+                this.secondProgressBar, this.secondLabel,
+                this.logic.SecondNum
+            );
+            this.Set(
+                this.thirdProgressBar, this.thirdLabel,
+                this.logic.ThirdNum
+            );
+            this.Set(
+                this.fourthProgressBar, this.fourthLabel,
+                this.logic.FourthNum
+            );
+
+            this.statusStripLabel.Text = string.Format(
+                "{0:HH:mm:ss}", Logic.Now
+            );
+
+            this.backgroundWorker.RunWorkerAsync();
         }
 
-        private void OnResize()
+        private void StatusStripLabel_Click(object _, EventArgs __)
         {
-            int boxW = this.ClientSize.Width - (SPAN_X * 2);
-            int boxH = (this.ClientSize.Height - (SPAN_Y * 4)) / 3;
-
-            this.boxFst.Size = new Size(boxW, boxH);
-            this.boxScd.Size = new Size(boxW, boxH);
-            this.boxTrd.Size = new Size(boxW, boxH);
-
-            int boxX = SPAN_X;
-            int boxY = SPAN_Y;
-
-            this.boxFst.Location = new Point(boxX, boxY);
-            boxY += boxH + SPAN_Y;
-            this.boxScd.Location = new Point(boxX, boxY);
-            boxY += boxH + SPAN_Y;
-            this.boxTrd.Location = new Point(boxX, boxY);
-
-            int barW = boxW - SPAN_X;
-            int barH = SPAN_Y * 2;
-
-            this.barFst.Size = new Size(barW, barH);
-            this.barScd.Size = new Size(barW, barH);
-            this.barTrd.Size = new Size(barW, barH);
-
-            int barX = SPAN_X / 2;
-            int barY = (SPAN_Y / 2) * 3;
-
-            this.barFst.Location = new Point(barX, barY);
-            this.barScd.Location = new Point(barX, barY);
-            this.barTrd.Location = new Point(barX, barY);
-
-            float txtHeight = boxH - barH - (SPAN_Y * 4) - (SPAN_Y / 2);
-
-            this.txtFst.Font = SizedFont(txtHeight);
-            this.txtScd.Font = SizedFont(txtHeight);
-            this.txtTrd.Font = SizedFont(txtHeight);
-
-            int txtX = SPAN_X / 2;
-            int txtY = SPAN_X * 4;
-
-            this.txtFst.Location = new Point(txtX, txtY);
-            this.txtScd.Location = new Point(txtX, txtY);
-            this.txtTrd.Location = new Point(txtX, txtY);
+            foreach (Label lbl in this.Labels())
+            {
+                lbl.Text = "💩";
+            }
         }
-
-        #endregion
 
     }
 }
