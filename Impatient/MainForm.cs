@@ -26,7 +26,7 @@ namespace Impatient
 
             this.backgroundWorker.RunWorkerAsync();
         }
-         
+
         private IEnumerable<Label> Labels()
         {
             yield return this.firstLabel;
@@ -35,7 +35,8 @@ namespace Impatient
             yield return this.fourthLabel;
         }
          
-        private void Set(ProgressBar bar, Label lbl, int val)
+
+        private void Set(Label lbl, ProgressBar bar, int val)
         {
             bar.Value = val;
             lbl.Text = string.Format("{0:000}", val);
@@ -50,32 +51,30 @@ namespace Impatient
             object _, RunWorkerCompletedEventArgs __
         )
         {
-            this.BackColor = (
+            Color col = (
                 (Logic.Now.Second == 59) ?
                 SystemColors.ControlDark : SystemColors.Control
             );
+            this.BackColor = col;
+            this.statusStrip.BackColor = col;
 
             this.Set(
-                this.firstProgressBar, this.firstLabel,
-                this.logic.FirstNum
+                this.firstLabel, this.firstProgressBar, this.logic.FirstNum
             );
             this.Set(
-                this.secondProgressBar, this.secondLabel,
-                this.logic.SecondNum
+                this.secondLabel, this.secondProgressBar, this.logic.SecondNum
             );
             this.Set(
-                this.thirdProgressBar, this.thirdLabel,
-                this.logic.ThirdNum
+                this.thirdLabel, this.thirdProgressBar, this.logic.ThirdNum
             );
             this.Set(
-                this.fourthProgressBar, this.fourthLabel,
-                this.logic.FourthNum
+                this.fourthLabel, this.fourthProgressBar, this.logic.FourthNum
             );
 
             this.statusStripLabel.Text = string.Format(
                 "{0:HH:mm:ss}", Logic.Now
             );
-
+            
             this.backgroundWorker.RunWorkerAsync();
         }
 
