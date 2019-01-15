@@ -90,74 +90,90 @@ namespace Impatient
             //
             // firstLabel
             //
-            this.firstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.firstLabel.AutoEllipsis = true;
-            this.firstLabel.Location = new System.Drawing.Point(3, 45);
+            this.firstLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.firstLabel.Location = new System.Drawing.Point(3, 0);
             this.firstLabel.Name = "firstLabel";
-            this.firstLabel.Size = new System.Drawing.Size(150, 13);
+            this.firstLabel.Size = new System.Drawing.Size(150, 104);
             this.firstLabel.TabIndex = 0;
             this.firstLabel.Text = "NaN";
+            this.firstLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
             // secondLabel
             //
-            this.secondLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.secondLabel.AutoEllipsis = true;
-            this.secondLabel.Location = new System.Drawing.Point(3, 149);
+            this.secondLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.secondLabel.Location = new System.Drawing.Point(3, 104);
             this.secondLabel.Name = "secondLabel";
-            this.secondLabel.Size = new System.Drawing.Size(150, 13);
+            this.secondLabel.Size = new System.Drawing.Size(150, 104);
             this.secondLabel.TabIndex = 0;
             this.secondLabel.Text = "NaN";
+            this.secondLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
             // thirdLabel
             //
-            this.thirdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.thirdLabel.AutoEllipsis = true;
-            this.thirdLabel.Location = new System.Drawing.Point(3, 253);
+            this.thirdLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.thirdLabel.Location = new System.Drawing.Point(3, 208);
             this.thirdLabel.Name = "thirdLabel";
-            this.thirdLabel.Size = new System.Drawing.Size(150, 13);
+            this.thirdLabel.Size = new System.Drawing.Size(150, 104);
             this.thirdLabel.TabIndex = 0;
             this.thirdLabel.Text = "NaN";
+            this.thirdLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
             // fourthLabel
             //
-            this.fourthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.fourthLabel.AutoEllipsis = true;
-            this.fourthLabel.Location = new System.Drawing.Point(3, 359);
+            this.fourthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fourthLabel.Location = new System.Drawing.Point(3, 312);
             this.fourthLabel.Name = "fourthLabel";
-            this.fourthLabel.Size = new System.Drawing.Size(150, 13);
+            this.fourthLabel.Size = new System.Drawing.Size(150, 107);
             this.fourthLabel.TabIndex = 0;
             this.fourthLabel.Text = "NaN";
+            this.fourthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             //
             // firstProgressBar
             //
-            this.firstProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.firstProgressBar.Location = new System.Drawing.Point(159, 40);
+            this.firstProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.firstProgressBar.Location = new System.Drawing.Point(159, 3);
             this.firstProgressBar.Name = "firstProgressBar";
-            this.firstProgressBar.Size = new System.Drawing.Size(462, 23);
+            this.firstProgressBar.Size = new System.Drawing.Size(462, 98);
             this.firstProgressBar.TabIndex = 0;
             //
             // secondProgressBar
             //
-            this.secondProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.secondProgressBar.Location = new System.Drawing.Point(159, 144);
+            this.secondProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.secondProgressBar.Location = new System.Drawing.Point(159, 107);
             this.secondProgressBar.Name = "secondProgressBar";
-            this.secondProgressBar.Size = new System.Drawing.Size(462, 23);
+            this.secondProgressBar.Size = new System.Drawing.Size(462, 98);
             this.secondProgressBar.TabIndex = 0;
             //
             // thirdProgressBar
             //
-            this.thirdProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.thirdProgressBar.Location = new System.Drawing.Point(159, 248);
+            this.thirdProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.thirdProgressBar.Location = new System.Drawing.Point(159, 211);
             this.thirdProgressBar.Name = "thirdProgressBar";
-            this.thirdProgressBar.Size = new System.Drawing.Size(462, 23);
+            this.thirdProgressBar.Size = new System.Drawing.Size(462, 98);
             this.thirdProgressBar.TabIndex = 0;
             //
             // fourthProgressBar
             //
-            this.fourthProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.fourthProgressBar.Location = new System.Drawing.Point(159, 354);
+            this.fourthProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fourthProgressBar.Location = new System.Drawing.Point(159, 315);
             this.fourthProgressBar.Name = "fourthProgressBar";
-            this.fourthProgressBar.Size = new System.Drawing.Size(462, 23);
+            this.fourthProgressBar.Size = new System.Drawing.Size(462, 101);
             this.fourthProgressBar.TabIndex = 0;
             //
             // backgroundWorker
@@ -177,6 +193,7 @@ namespace Impatient
             this.MinimumSize = new System.Drawing.Size(320, 240);
             this.Name = "MainForm";
             this.Text = "Impatient";
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.mainTableLayoutPanel.ResumeLayout(false);
